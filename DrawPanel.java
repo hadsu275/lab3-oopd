@@ -10,19 +10,37 @@ public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
-    // To keep track of a single car's position
     Point volvoPoint = new Point();
-
     BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(300,300);
+    Point volvoWorkshopPoint = new Point(300,0);
+    // To keep track of a single car's position
 
+    BufferedImage saab95Image;
+    Point saab95Point = new Point(0, 150);
+
+
+    BufferedImage scaniaImage;
+    Point scaniaPoint = new Point(0,250);
 
     // TODO: Make this general for all cars
-    void moveit(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
+    void moveit(int x, int y, Vehicle car){
+        if (car instanceof Volvo240){
+            volvoPoint.x = x;
+            volvoPoint.y = y;
+        }
+        if (car instanceof Saab95){
+            saab95Point.x = x;
+            saab95Point.y = y+100;
+        }
+        if (car instanceof Scania){
+            scaniaPoint.x = x;
+            scaniaPoint.y = y+200;
+        }
     }
 
+    //BufferedImage saab95WorkshopImage;
+
+    //Point saab95WorkshopPoint = new Point(-300,-300);
 
 
     // Initializes the panel and reads the images
@@ -40,10 +58,16 @@ public class DrawPanel extends JPanel{
             // if you are starting in IntelliJ.
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             volvoWorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg"));
+            saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
+            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+
+            //saab95WorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95Brand.jpg"));
+
         } catch (IOException ex)
         {
             ex.printStackTrace();
         }
+
 
     }
 
@@ -54,5 +78,15 @@ public class DrawPanel extends JPanel{
         super.paintComponent(g);
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
         g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
+        g.drawImage(saab95Image, saab95Point.x, saab95Point.y, null); // see javadoc for more info on the parameters
+        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null); // see javadoc for more info on the parameters
+        //g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
+    }
+
+    public static interface Movable {
+        void move();
+        void turnLeft();
+        void turnRight();
+
     }
 }
