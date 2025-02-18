@@ -43,7 +43,10 @@ public class Scania extends Vehicle implements TruckBed{
     @Override
     public void move(){
         if (tippingAngle > 0){
-            throw new IllegalArgumentException("lastbilen ska inte kunna köra om flaket är uppfällt.");
+            if (getCurrentSpeed() != 0){
+                throw new IllegalArgumentException("lastbilen ska inte kunna köra om flaket är uppfällt.");
+            }
+
         }
         super.move();
     }

@@ -30,24 +30,15 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
         cc.cars.add(new Volvo240());
-        //cc.cars.getFirst().startEngine();
+
         cc.cars.getFirst().currentSpeed = 0;
         cc.cars.getFirst().direction = "East";
-        //cc.cars.getLast().stopEngine();
 
-
-        //CarController bb = new CarController();
         cc.cars.add(new Saab95());
-        //cc.cars.getLast().startEngine();
         cc.cars.getLast().direction = "East";
-        //bb.cars.getLast().stopEngine();
-
-
-        //CarController ss = new CarController();
         cc.cars.add(new Scania());
-        // cc.cars.getLast().startEngine();
         cc.cars.getLast().direction = "East";
-        //bb.cars.getLast().stopEngine();
+
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -65,9 +56,23 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.x);
                 int y = (int) Math.round(car.y);
+
                 frame.drawPanel.moveit(x, y, car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
+                if (x > 800){
+                    car.turnLeft();
+                    car.turnLeft();
+                }
+                for (Vehicle volvo : cars){
+                    if (volvo instanceof Volvo240 volvo240){
+                        int xv = (int) Math.round(volvo240.x);
+                        if (300 < xv && xv < 400 ){
+                            volvo240.currentSpeed = 0;
+                        }
+                    }
+                }
+
             }
         }
     }
@@ -130,4 +135,5 @@ public class CarController {
             car.stopEngine();
         }
     }
+
 }

@@ -30,18 +30,13 @@ public class DrawPanel extends JPanel{
         }
         if (car instanceof Saab95){
             saab95Point.x = x;
-            saab95Point.y = y+100;
+            saab95Point.y = y + 150;
         }
         if (car instanceof Scania){
             scaniaPoint.x = x;
-            scaniaPoint.y = y+200;
+            scaniaPoint.y = y + 250;
         }
     }
-
-    //BufferedImage saab95WorkshopImage;
-
-    //Point saab95WorkshopPoint = new Point(-300,-300);
-
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
@@ -61,7 +56,7 @@ public class DrawPanel extends JPanel{
             saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
 
-            //saab95WorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95Brand.jpg"));
+
 
         } catch (IOException ex)
         {
@@ -80,7 +75,7 @@ public class DrawPanel extends JPanel{
         g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
         g.drawImage(saab95Image, saab95Point.x, saab95Point.y, null); // see javadoc for more info on the parameters
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null); // see javadoc for more info on the parameters
-        //g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
+
     }
 
     public static interface Movable {
