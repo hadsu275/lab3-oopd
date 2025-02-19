@@ -6,7 +6,7 @@ public class Scania extends Vehicle implements TruckBed{
     //public final static double trimFactor = 1.50;
 
     public Scania() {
-        super(2, 150,"Scania", Color.white);
+        super(2, 125,"Scania", Color.white);
     }
     public double speedFactor(){
         return enginePower * 0.01; // 1.5
@@ -43,8 +43,9 @@ public class Scania extends Vehicle implements TruckBed{
     @Override
     public void move(){
         if (tippingAngle > 0){
-            if (getCurrentSpeed() != 0){
-                throw new IllegalArgumentException("lastbilen ska inte kunna köra om flaket är uppfällt.");
+            if (getCurrentSpeed()!= 0){
+                currentSpeed = 0;
+                System.out.println("Scania kan köras om flaket är uppe: ");
             }
 
         }

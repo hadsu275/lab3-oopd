@@ -60,7 +60,11 @@ public class CarController {
                 frame.drawPanel.moveit(x, y, car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
-                if (x > 800){
+                if (x > 700 ){
+                    car.turnLeft();
+                    car.turnLeft();
+                }
+                if (x < 0){
                     car.turnLeft();
                     car.turnLeft();
                 }
@@ -82,7 +86,6 @@ public class CarController {
         double gas = ((double) amount) / 100;
         for (Vehicle car : cars
         ) {
-            System.out.println("hello");
             car.gas(gas);
         }
     }
@@ -95,9 +98,7 @@ public class CarController {
 
     void turboOn(){
         for (Vehicle car : cars){
-            System.out.println("jjjjjj");
             if (car instanceof Saab95 saab95) {
-                System.out.println("ssss");
                 saab95.setTurboOn();
             }
         }
