@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 public class CarWorkShop<T extends PersonalCar> {
 
-    protected final ArrayList<T> carsIn;
-    protected final int maxCapacity;
+    private final ArrayList<T> carsIn;
+    private final int maxCapacity;
 
     public CarWorkShop(int maxCapacity) {
         this.carsIn = new ArrayList<>();
