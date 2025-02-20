@@ -30,6 +30,9 @@ class ScaniaTest {
     void move() {
         Scania scania = new Scania();
         scania.increaseTipping(40);
-        assertThrows(IllegalArgumentException.class, scania::move);
+        scania.direction = "East";
+        scania.gas(1);
+        scania.move();
+        assertEquals(0, scania.getCurrentSpeed());
     }
 }
